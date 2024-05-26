@@ -10,8 +10,8 @@ router.post('/register', async (req, res) => {
   });
 
 // User login
- router.post('/login',async (req, res) => {
-    await authController.login(req, res);
+ router.post('/login',async (req, res, next) => {
+    await authController.login(req, res, next);
   });
 
 

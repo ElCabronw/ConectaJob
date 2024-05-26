@@ -1,12 +1,13 @@
 const errorHandler = require('../../shared/helpers/errorHandler');
 const express = require('express');
  const app = express();
- const authRoutes = require('./api/routes/auth');
- const userRoute = require('./api/routes/user');
+ const candidateRoutes = require('./api/routes/candidate');
+ const jobRoute = require('./api/routes/job');
  app.use(express.json());
 
- app.use('/auth', authRoutes);
- app.use('/user', userRoute);
+ app.use('/job', jobRoute);
+ app.use('/candidate', candidateRoutes);
+
  app.use(errorHandler);
 
 // // error handler

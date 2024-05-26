@@ -1,0 +1,45 @@
+http:
+  port: 7000
+admin:
+  port: 9876
+  host: localhost
+apiEndpoints:
+  auth:
+    host: localhost
+    paths: 
+      - '/auth/*'
+      - '/user/*'
+  job:
+    host: localhost
+    paths: 
+      - '/job/*'
+      - '/candidate/*'
+serviceEndpoints:
+  auth:
+    url: 'http://localhost:7001'
+  job:
+    url: 'http://localhost:7002'
+policies:
+  - basic-auth
+  - cors
+  - expression
+  - key-auth
+  - log
+  - oauth2
+  - proxy
+  - rate-limit
+pipelines:
+  - name: auth
+    apiEndpoints:
+      - auth
+    policies:
+      - proxy:
+        - action:
+            serviceEndpoint: auth
+  - name: job
+    apiEndpoints:
+      - job
+    policies:
+      - proxy:
+        - action:
+            serviceEndpoint: job

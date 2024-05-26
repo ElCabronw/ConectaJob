@@ -1,6 +1,6 @@
 const db = require("../helpers/db");
 const User = db.User;
-const Role = require("../helpers/role");
+const Role = require("../../../shared/helpers/role");
 
 async function getAllUsers(currentUser){
     console.log(currentUser);   
@@ -33,6 +33,7 @@ async function updateUser(id, userParam) {
     user.updated_at = Date.now();
     Object.assign(user, userParam);
     await user.save();
+    return id;
   }
 
   async function deleteUser(id) {
