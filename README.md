@@ -2,4 +2,8 @@ Projeto back end do conectaJOb.
 
 a pasta 'auth' é o Microserviço responsavel pela autenticacao, para criar outros Ms, crie outra pasta na raiz da solução.
 
-Lembre-se de colocar a url do banco de dados mongo. crie uma conta no mongodb e entao crie uma database no mongo atlas.
+Passo a Passo para rodar:
+
+1- acesse via linha de comando as pastas 'ConectaJob/job' e 'ConectaJob/auth'
+2 - rode o comando 'npm i' em cada terminal
+3 - rode o projeto com 'npm start'
