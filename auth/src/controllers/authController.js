@@ -13,7 +13,7 @@ async function register(req, res, next) {
 }
 
 // Rota de login
-async function login(req, res) {
+async function login(req, res, next) {
     try {
         const { username, password } = req.body;
        await authService.login(req.body).then((token) => res.status(200).json({ token })).catch((error) => next(error));    

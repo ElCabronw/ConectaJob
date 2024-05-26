@@ -26,7 +26,6 @@ async function register(userParam) {
     try {
 
         const user = new User(userParam);
-        console.log(userParam);
         if (userParam.password) {
             const hashedPassword = await bcrypt.hash(userParam.password, 10);
             user.password = hashedPassword;
@@ -42,9 +41,12 @@ async function login(credentials) {
     try {
         const { username, password } = credentials;
         const user = await User.findOne({ username });
+        console.log(user)
         if (!user) {
         throw 'Authentication failed';
         }
+        console.log(user.password);
+
         const passwordMatch = await bcrypt.compare(password, user.password);
         if (!passwordMatch) {
             throw "Username or password is incorrect." ;
