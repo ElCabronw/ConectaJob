@@ -33,13 +33,23 @@ pipelines:
     apiEndpoints:
       - auth
     policies:
+      - cors:
+          - action:
+              origin: 'http://localhost:8081'
+              methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
+              allowedHeaders: ['Content-Type', 'Authorization']
       - proxy:
-        - action:
-            serviceEndpoint: auth
+          - action:
+              serviceEndpoint: auth
   - name: job
     apiEndpoints:
       - job
     policies:
+      - cors:
+          - action:
+              origin: 'http://localhost:8081'
+              methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
+              allowedHeaders: ['Content-Type', 'Authorization']
       - proxy:
-        - action:
-            serviceEndpoint: job
+          - action:
+              serviceEndpoint: job
